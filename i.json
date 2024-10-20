@@ -1,0 +1,20 @@
+{
+  "boot": {
+    "beta": {
+      "ver": "",
+      "rVer": "",
+      "lVer": ""
+    },
+    "premium": {
+      "ver": "",
+      "rVer": "",
+      "lVer": ""
+    },
+    "free": {
+      "ver": "",
+      "rVer": "",
+      "lVer": ""
+    }
+  },
+  "ep": "https://saladexecutor.pythonanywhere.com/"
+}
