@@ -136,16 +136,13 @@
                 }),
                 credentials: "omit"
             })
-            .then(response => response.json())
-            .then(data => {
+            .then(response => {
                 console.log(data);
-                alert("Registration successful!");
-                submit.classList.add('buttons'); 
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Registration failed. Please try again.");
-                submit.classList.add('buttonf'); 
+                if (response.status = 201) {
+                    submit.classList.add('buttons'); 
+                } else {
+                    submit.classList.add('buttonf'); 
+                }
             });
         });
     </script>
