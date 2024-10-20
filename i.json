@@ -1,9 +1,9 @@
 {
   "boot": {
     "beta": {
-      "ver": "",
-      "rVer": "",
-      "lVer": ""
+      "ver": "v2.0.0",
+      "rVer": "version-2220a78ed1774256",
+      "lVer": "v2.0.0"
     },
     "premium": {
       "ver": "",
