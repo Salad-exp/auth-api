@@ -5,31 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Registration</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.8.0/sha512.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://i.pinimg.com/originals/1b/bb/8c/1bbb8cab148f22869d4433547a0d520f.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        form {
+            background-color: #474646; 
+            padding: 2rem;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #f5f5f5;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05); 
+        }
+        .buttons {
+            background-color: #28a745 !important; 
+        }
+
+        .buttonf {
+            background-color: #dc3545 !important; 
+        }
+        @media (max-width: 400px) {
+            form {
+                width: 100%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Secure Registration</h1>
-    <form id="registrationForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" required><br><br>
+    <form id="registtation">
+        <h1>Secure Registration</h1>
         
-        <label for="password">Password:</label>
-        <input type="password" id="password" required><br><br>
+        <label for="username">Username</label>
+        <input type="text" id="username" required>
         
-        <label for="email">Email:</label>
-        <input type="email" id="email" required><br><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
         
-        <button type="submit">Register</button>
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+        
+        <button type="submit" id="register">Register</button>
     </form>
 
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        document.getElementById('registtation').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const email = document.getElementById('email').value;
-
+            const submit = document.getElementById('register');
+            
             const hashedPassword = sha512(password);
+            submit.classList.remove('buttons', 'buttonf');
 
             fetch("https://saladexecutor.pythonanywhere.com/v0/register", {
                 method: "POST",
@@ -48,10 +122,12 @@
             .then(data => {
                 console.log(data);
                 alert("Registration successful!");
+                submit.classList.add('buttons'); 
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert("Registration failed. Please try again.");
+                submit.classList.add('buttonf'); 
             });
         });
     </script>
