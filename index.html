@@ -137,8 +137,8 @@
                 credentials: "omit"
             })
             .then(response => {
-                console.log(data);
-                if (response.status = 201) {
+                console.log(response.json());
+                if (response.status == 201) {
                     submit.classList.add('buttons'); 
                 } else {
                     submit.classList.add('buttonf'); 
